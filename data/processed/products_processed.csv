@@ -1,0 +1,46 @@
+product_id,sku,product_name,category,sub_category,brand,unit_cost,list_price,target_margin_pct,supplier_name,lead_time_days,reorder_quantity
+PRD-001,SKU-ELE-001,"Ultra HD 4K OLED TV 65""",Electronics,Televisions,LumixVision,750.0,1299.99,42.31,LumixVision Global Logistics,10,30
+PRD-002,SKU-ELE-002,Noise-Cancelling Pro Headphones,Electronics,Audio,SonicWave,120.0,249.99,52.0,SonicWave Global Logistics,7,50
+PRD-003,SKU-ELE-003,Precision Fitness Smartwatch V3,Electronics,Wearables,PulseTrack,95.0,199.99,52.5,PulseTrack Global Logistics,7,60
+PRD-004,SKU-ELE-004,NextGen Tablet Pro 11-inch,Electronics,Computers,NovaTech,320.0,599.99,46.67,NovaTech Global Logistics,10,40
+PRD-005,SKU-ELE-005,Ergonomic Wireless Mechanical Keyboard,Electronics,Accessories,KeyCraft,45.0,99.99,55.0,KeyCraft Global Logistics,5,80
+PRD-006,SKU-ELE-006,True Wireless ANC Earbuds,Electronics,Audio,SonicWave,55.0,129.99,57.69,SonicWave Global Logistics,5,100
+PRD-007,SKU-ELE-007,Smart Home Mesh Wi-Fi 6 Router,Electronics,Networking,OmniNet,80.0,179.99,55.55,OmniNet Global Logistics,8,45
+PRD-008,SKU-ELE-008,"4K Ultra-Wide Studio Monitor 34""",Electronics,Displays,LumixVision,280.0,499.99,44.0,LumixVision Global Logistics,12,35
+PRD-009,SKU-ELE-009,Wireless Fast Charging Stand Duo,Electronics,Accessories,NovaTech,20.0,49.99,59.99,NovaTech Global Logistics,5,90
+PRD-010,SKU-APP-010,Tailored Stretch Cotton Blazer,Apparel,Formalwear,Avenue & Co,65.0,169.99,61.76,Avenue & Co Global Logistics,12,40
+PRD-011,SKU-APP-011,Selvedge Japanese Denim Jeans,Apparel,Bottoms,IndigoThread,40.0,119.99,66.66,IndigoThread Global Logistics,10,60
+PRD-012,SKU-APP-012,Performance Breathable Polo Shirt,Apparel,Tops,Avenue & Co,22.0,59.99,63.33,Avenue & Co Global Logistics,7,80
+PRD-013,SKU-APP-013,Waterproof Thermal Mountain Parka,Apparel,Outerwear,NordicPeak,110.0,259.99,57.69,NordicPeak Global Logistics,14,35
+PRD-014,SKU-APP-014,100% Merino Wool Crewneck Sweater,Apparel,Knitwear,NordicPeak,48.0,129.99,63.07,NordicPeak Global Logistics,12,45
+PRD-015,SKU-APP-015,French Terry Oversized Hoodie,Apparel,Casualwear,UrbanForge,30.0,79.99,62.5,UrbanForge Global Logistics,7,75
+PRD-016,SKU-APP-016,Moisture-Wicking Athletic Joggers,Apparel,Activewear,UrbanForge,26.0,69.99,62.85,UrbanForge Global Logistics,7,70
+PRD-017,SKU-APP-017,Classic Fit Egyptian Cotton Oxford,Apparel,Tops,Avenue & Co,28.0,74.99,62.66,Avenue & Co Global Logistics,8,65
+PRD-018,SKU-APP-018,Lightweight Packable Windbreaker,Apparel,Outerwear,NordicPeak,38.0,89.99,57.77,NordicPeak Global Logistics,10,50
+PRD-019,SKU-HOM-019,Artisan Compact Espresso Machine,Home & Living,Kitchenware,BaristaLab,180.0,399.99,55.0,BaristaLab Global Logistics,14,25
+PRD-020,SKU-HOM-020,HEPA Smart Air Purifier Pro,Home & Living,Appliances,AeroPure,90.0,199.99,55.0,AeroPure Global Logistics,10,40
+PRD-021,SKU-HOM-021,Pre-Seasoned Cast Iron Dutch Oven,Home & Living,Cookware,HeritageIron,42.0,99.99,58.0,HeritageIron Global Logistics,12,35
+PRD-022,SKU-HOM-022,Hand-Poured Soy Aromatherapy Candle,Home & Living,Decor,LuminaHome,12.0,32.0,62.5,LuminaHome Global Logistics,5,120
+PRD-023,SKU-HOM-023,Egyptian Long-Staple Sateen Sheet Set,Home & Living,Bedding,LuxeLinens,58.0,149.99,61.33,LuxeLinens Global Logistics,10,50
+PRD-024,SKU-HOM-024,Motorized Standing Desk Converter,Home & Living,Furniture,ErgoCraft,140.0,299.99,53.33,ErgoCraft Global Logistics,15,30
+PRD-025,SKU-HOM-025,Stainless Steel Chef Knife 8-inch,Home & Living,Cutlery,HeritageIron,35.0,89.99,61.11,HeritageIron Global Logistics,8,60
+PRD-026,SKU-HOM-026,Minimalist Ceramic Dinnerware Set 16pc,Home & Living,Dining,LuminaHome,50.0,129.99,61.54,LuminaHome Global Logistics,14,40
+PRD-027,SKU-HOM-027,Cordless Stick Vacuum Ultra,Home & Living,Appliances,AeroPure,115.0,249.99,54.0,AeroPure Global Logistics,12,35
+PRD-028,SKU-FOO-028,Cushioned Carbon-Plate Marathon Runner,Footwear,Running,VeloceRun,85.0,189.99,55.26,VeloceRun Global Logistics,10,45
+PRD-029,SKU-FOO-029,Handcrafted Italian Leather Loafers,Footwear,Formal,ModenaCraft,95.0,229.99,58.69,ModenaCraft Global Logistics,14,30
+PRD-030,SKU-FOO-030,All-Weather Waterproof Trail Boot,Footwear,Outdoor,SummitPath,70.0,159.99,56.25,SummitPath Global Logistics,12,40
+PRD-031,SKU-FOO-031,Minimalist Daily Canvas Sneaker,Footwear,Casual,VeloceRun,28.0,69.99,59.99,VeloceRun Global Logistics,7,90
+PRD-032,SKU-FOO-032,Slip-On Memory Foam Recovery Slide,Footwear,Sandals,VeloceRun,16.0,39.99,59.99,VeloceRun Global Logistics,5,110
+PRD-033,SKU-FOO-033,Goodyear Welted Suede Chelsea Boot,Footwear,Boots,ModenaCraft,110.0,249.99,56.0,ModenaCraft Global Logistics,15,30
+PRD-034,SKU-FOO-034,Court Classic Tennis Sneaker,Footwear,Sport,UrbanForge,36.0,89.99,60.0,UrbanForge Global Logistics,8,70
+PRD-035,SKU-FOO-035,High-Traction Hiking Shoe,Footwear,Outdoor,SummitPath,52.0,129.99,60.0,SummitPath Global Logistics,10,50
+PRD-036,SKU-FOO-036,Water-Resistant Winter Snow Boot,Footwear,Winter,SummitPath,68.0,149.99,54.66,SummitPath Global Logistics,14,35
+PRD-037,SKU-LUX-037,Automatic Chronograph Sapphire Watch,Luxury & Accessories,Timepieces,HorologyGeneve,350.0,799.99,56.25,HorologyGeneve Global Logistics,20,20
+PRD-038,SKU-LUX-038,Full-Grain Italian Leather Bifold Wallet,Luxury & Accessories,Leather Goods,ModenaCraft,32.0,89.99,64.44,ModenaCraft Global Logistics,8,60
+PRD-039,SKU-LUX-039,Polarized Aviator Titanium Sunglasses,Luxury & Accessories,Eyewear,AeroShield,60.0,159.99,62.5,AeroShield Global Logistics,7,50
+PRD-040,SKU-LUX-040,Full-Grain Leather Weekender Duffle,Luxury & Accessories,Travel,ModenaCraft,130.0,299.99,56.67,ModenaCraft Global Logistics,15,25
+PRD-041,SKU-LUX-041,Sterling Silver Modern Cufflinks,Luxury & Accessories,Jewelry,HorologyGeneve,40.0,110.0,63.64,HorologyGeneve Global Logistics,10,40
+PRD-042,SKU-LUX-042,Thermal Insulated Stainless Steel Tumbler,Luxury & Accessories,Drinkware,LuminaHome,14.0,34.99,59.99,LuminaHome Global Logistics,5,100
+PRD-043,SKU-LUX-043,RFID-Blocking Cardholder Slim,Luxury & Accessories,Accessories,Avenue & Co,15.0,39.99,62.49,Avenue & Co Global Logistics,6,80
+PRD-044,SKU-LUX-044,Pure Cashmere Fringed Scarf,Luxury & Accessories,Winter,NordicPeak,50.0,139.99,64.28,NordicPeak Global Logistics,12,35
+PRD-045,SKU-LUX-045,Handcrafted Brass Desk Clock,Luxury & Accessories,Timepieces,HorologyGeneve,45.0,119.99,62.5,HorologyGeneve Global Logistics,10,30

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: retail_bi_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: retail_bi
+      POSTGRES_USER: retail_admin
+      POSTGRES_PASSWORD: retail_secure_pass_2026
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U retail_admin -d retail_bi"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  dashboard:
+    build: .
+    container_name: retail_bi_dashboard
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://retail_admin:retail_secure_pass_2026@postgres:5432/retail_bi
+      - HOST=0.0.0.0
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/exports:/app/data/exports
+
+volumes:
+  pgdata:

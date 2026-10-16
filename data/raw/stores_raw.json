@@ -1,0 +1,90 @@
+[
+  {
+    "store_id": "STR-001",
+    "name": "Manhattan 5th Ave Flagship",
+    "store_type": "Flagship",
+    "region": "East",
+    "city": "New York",
+    "state": "NY",
+    "square_feet": 28000,
+    "manager_name": "Eleanor Vance",
+    "target_monthly_revenue": 480000.0
+  },
+  {
+    "store_id": "STR-002",
+    "name": "Chicago Michigan Ave Center",
+    "store_type": "Downtown",
+    "region": "Midwest",
+    "city": "Chicago",
+    "state": "IL",
+    "square_feet": 20000,
+    "manager_name": "Marcus Kane",
+    "target_monthly_revenue": 340000.0
+  },
+  {
+    "store_id": "STR-003",
+    "name": "SF Union Square Tech Hub",
+    "store_type": "Flagship",
+    "region": "West",
+    "city": "San Francisco",
+    "state": "CA",
+    "square_feet": 24000,
+    "manager_name": "Aria Patel",
+    "target_monthly_revenue": 420000.0
+  },
+  {
+    "store_id": "STR-004",
+    "name": "Austin Domain Town Center",
+    "store_type": "Suburban",
+    "region": "South",
+    "city": "Austin",
+    "state": "TX",
+    "square_feet": 16000,
+    "manager_name": "Tyler Brooks",
+    "target_monthly_revenue": 260000.0
+  },
+  {
+    "store_id": "STR-005",
+    "name": "Dallas Galleria Megastore",
+    "store_type": "Mall",
+    "region": "South",
+    "city": "Dallas",
+    "state": "TX",
+    "square_feet": 22000,
+    "manager_name": "Samantha Cruz",
+    "target_monthly_revenue": 310000.0
+  },
+  {
+    "store_id": "STR-006",
+    "name": "Seattle Pike Place Boutique",
+    "store_type": "Express",
+    "region": "West",
+    "city": "Seattle",
+    "state": "WA",
+    "square_feet": 12000,
+    "manager_name": "David Sterling",
+    "target_monthly_revenue": 210000.0
+  },
+  {
+    "store_id": "STR-007",
+    "name": "Miami Brickell Promenade",
+    "store_type": "Mall",
+    "region": "East",
+    "city": "Miami",
+    "state": "FL",
+    "square_feet": 18000,
+    "manager_name": "Sofia Reyes",
+    "target_monthly_revenue": 290000.0
+  },
+  {
+    "store_id": "STR-008",
+    "name": "Omnichannel Hub & Express",
+    "store_type": "Distribution Hub",
+    "region": "Midwest",
+    "city": "Columbus",
+    "state": "OH",
+    "square_feet": 45000,
+    "manager_name": "Jordan Lee",
+    "target_monthly_revenue": 550000.0
+  }
+]

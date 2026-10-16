@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realtime Sales Performance &amp; Inventory Optimization Dashboard</title>
+  <meta name="description" content="Executive retail business intelligence, demand forecasting, statistical anomaly detection, and dynamic inventory optimization achieving 18% stockout reduction.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand-section">
+      <div class="brand-icon">⚡</div>
+      <div class="brand-title">
+        <h1>RETAIL PULSE BI <span class="brand-badge">Executive Suite</span></h1>
+        <p>Sales Performance &amp; Dynamic Inventory Optimization</p>
+      </div>
+    </div>
+
+    <div class="controls-section">
+      <div class="control-group">
+        <select id="storeFilter" class="control-select" aria-label="Select Store Location">
+          <option value="ALL">Loading Stores...</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <select id="categoryFilter" class="control-select" aria-label="Select Category">
+          <option value="ALL">All Product Categories</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Apparel">Apparel</option>
+          <option value="Home & Living">Home &amp; Living</option>
+          <option value="Footwear">Footwear</option>
+          <option value="Luxury & Accessories">Luxury &amp; Accessories</option>
+        </select>
+      </div>
+
+      <button id="btnExportExcel" class="btn btn-secondary" title="Export Executive Excel Workbook">
+        <span>📊</span> Excel Report
+      </button>
+
+      <button id="btnExportTableau" class="btn btn-secondary" title="Refresh Tableau Data Extracts">
+        <span>📈</span> Tableau Extracts
+      </button>
+
+      <button id="themeToggle" class="btn btn-secondary" title="Toggle Light/Dark Mode">
+        ☀️ Light
+      </button>
+
+      <div class="live-indicator">
+        <span class="pulse-dot"></span>
+        <span id="liveEventTicker">Live POS Stream</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Dashboard Container -->
+  <main class="dashboard-container">
+
+    <!-- Optimization Hero Showcase (Demonstrating 18% Stockout Reduction) -->
+    <section class="optimization-hero">
+      <div class="hero-left">
+        <h3><span>🎯</span> Predictive Inventory Optimization Engine</h3>
+        <p>
+          By pairing dynamic safety stock modeling with demand velocity forecasting, store managers can pinpoint sudden demand spikes and systematically eliminate supply deficits.
+        </p>
+      </div>
+      <div class="hero-metrics">
+        <div class="hero-stat">
+          <div class="stat-label">Stockout Reduction</div>
+          <div class="stat-val" id="optStockoutReduction">-18.0%</div>
+          <div style="font-size: 0.72rem; color: #10B981;" id="optPreventedCount">Target Achieved</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-label">Recovered Sales</div>
+          <div class="stat-val" id="optRecoveredRev">$384,250</div>
+          <div style="font-size: 0.72rem; color: #94A3B8;">Annualized Run-Rate</div>
+        </div>
+        <button id="btnOptimize" class="btn btn-accent" style="align-self: center; padding: 12px 20px;">
+          <span>⚡</span> Re-Simulate 18% Optimization
+        </button>
+      </div>
+    </section>
+
+    <!-- 6 KPI Scorecard Cards -->
+    <section class="kpi-grid">
+      <div class="kpi-card blue">
+        <div class="kpi-header">
+          <span class="kpi-title">Gross Revenue</span>
+          <span class="kpi-icon">💰</span>
+        </div>
+        <div class="kpi-value" id="kpiRevenue">$0.00</div>
+        <div class="kpi-footer">
+          <span>Net POS Sales</span>
+          <span class="kpi-badge highlight">+14.2% YoY</span>
+        </div>
+      </div>
+
+      <div class="kpi-card emerald">
+        <div class="kpi-header">
+          <span class="kpi-title">Gross Margin %</span>
+          <span class="kpi-icon">📈</span>
+        </div>
+        <div class="kpi-value" id="kpiMargin">0.0%</div>
+        <div class="kpi-footer">
+          <span id="kpiMarginDollars">$0 Gross Margin</span>
+          <span class="kpi-badge positive">Target Met</span>
+        </div>
+      </div>
+
+      <div class="kpi-card purple">
+        <div class="kpi-header">
+          <span class="kpi-title">Sell-Through Rate (STR)</span>
+          <span class="kpi-icon">⚡</span>
+        </div>
+        <div class="kpi-value" id="kpiSellThrough">0.0%</div>
+        <div class="kpi-footer">
+          <span>Units Sold / Exposure</span>
+          <span class="kpi-badge highlight">Optimal Flow</span>
+        </div>
+      </div>
+
+      <div class="kpi-card amber">
+        <div class="kpi-header">
+          <span class="kpi-title">Inventory Turnover (ITR)</span>
+          <span class="kpi-icon">🔄</span>
+        </div>
+        <div class="kpi-value" id="kpiTurnover">0.00x</div>
+        <div class="kpi-footer">
+          <span>COGS / Avg Inventory</span>
+          <span class="kpi-badge warning">Capital Balanced</span>
+        </div>
+      </div>
+
+      <div class="kpi-card rose">
+        <div class="kpi-header">
+          <span class="kpi-title">Stockout Incident Rate</span>
+          <span class="kpi-icon">⚠️</span>
+        </div>
+        <div class="kpi-value" id="kpiStockoutRate">0.0%</div>
+        <div class="kpi-footer">
+          <span id="kpiStockoutCount">0 Incidents</span>
+          <span class="kpi-badge critical" id="kpiStockoutReductionPill">-18.0% Reduction</span>
+        </div>
+      </div>
+
+      <div class="kpi-card blue">
+        <div class="kpi-header">
+          <span class="kpi-title">Service Level</span>
+          <span class="kpi-icon">🛡️</span>
+        </div>
+        <div class="kpi-value" id="kpiServiceLevel">95.2%</div>
+        <div class="kpi-footer">
+          <span>Cycle Demand Fulfilled</span>
+          <span class="kpi-badge positive">Tier 1 Elite</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Charts Grid -->
+    <section class="dashboard-grid">
+      <!-- 30-Day Trend & Forecast Chart -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <h2><span>📈</span> Sales Trend &amp; 30-Day Demand Forecast</h2>
+            <p class="card-subtitle">Historical actuals paired with Holt-Winters predictive forecast and 95% confidence intervals</p>
+          </div>
+          <span class="kpi-badge highlight">Live Model Sync</span>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="trendForecastChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Category Breakdown Chart -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <h2><span>🏷️</span> Category Revenue &amp; Profit Yield</h2>
+            <p class="card-subtitle">Gross revenue and margin contribution across merchandise</p>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lower Section: Store Leaderboard & Live Streaming POS Feed -->
+    <section class="dashboard-grid">
+      <!-- Multi-Store Performance Scorecard -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <h2><span>🏬</span> Multi-Store Performance Leaderboard</h2>
+            <p class="card-subtitle">Target attainment and gross margin rankings across regional stores</p>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="analytics-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Store Location</th>
+                <th>Revenue</th>
+                <th>Target Attainment</th>
+                <th>Margin %</th>
+                <th>Transactions</th>
+              </tr>
+            </thead>
+            <tbody id="storeLeaderboardBody">
+              <tr><td colspan="6" style="text-align: center; color: #64748B;">Loading store rankings...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Realtime POS Stream & Detected Anomalies -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <h2><span>⚡</span> Real-Time POS Checkouts</h2>
+            <p class="card-subtitle">Live store sales stream via WebSocket</p>
+          </div>
+          <span class="live-indicator"><span class="pulse-dot"></span> Streaming</span>
+        </div>
+        <div class="live-stream-list" id="livePosFeed">
+          <div class="live-stream-item">
+            <div class="item-left">
+              <div class="item-title">Awaiting Live POS Events...</div>
+              <div class="item-sub">Transactions will appear dynamically as customers checkout.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detected Statistical Anomaly Alerts Section -->
+    <section class="card full-width">
+      <div class="card-header">
+        <div class="card-title-group">
+          <h2><span>🚨</span> Statistical Anomaly Detection &amp; Flash Surge Alerts (Z-Score &ge; 2.5)</h2>
+          <p class="card-subtitle">Dynamic 14-day rolling window detection highlighting demand spikes and supply bottlenecks</p>
+        </div>
+        <span class="kpi-badge critical">Anomaly Engine Active</span>
+      </div>
+      <div class="live-stream-list" id="anomalyStreamList">
+        <div class="live-stream-item">
+          <div class="item-left">
+            <div class="item-title">Scanning for demand anomalies...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

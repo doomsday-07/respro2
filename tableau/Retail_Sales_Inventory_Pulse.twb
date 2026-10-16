@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_Dashboard />
+    <ShowCustomVisualizations />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Tableau Retail Mart' inline='true' name='federated.retail_mart' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_retail_mart' name='textscan.tableau_retail_mart'>
+            <connection class='textscan' directory='../data/exports' filename='tableau_retail_mart.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.tableau_retail_mart' name='tableau_retail_mart.csv' table='[tableau_retail_mart#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='transaction_id' ordinal='0' />
+            <column datatype='datetime' name='timestamp' ordinal='1' />
+            <column datatype='date' name='date' ordinal='2' />
+            <column datatype='string' name='store_id' ordinal='3' />
+            <column datatype='string' name='store_name' ordinal='4' />
+            <column datatype='string' name='store_type' ordinal='5' />
+            <column datatype='string' name='region' ordinal='6' />
+            <column datatype='string' name='city' ordinal='7' />
+            <column datatype='string' name='state' ordinal='8' />
+            <column datatype='string' name='manager_name' ordinal='9' />
+            <column datatype='real' name='target_monthly_revenue' ordinal='10' />
+            <column datatype='string' name='product_id' ordinal='11' />
+            <column datatype='string' name='sku' ordinal='12' />
+            <column datatype='string' name='product_name' ordinal='13' />
+            <column datatype='string' name='category' ordinal='14' />
+            <column datatype='string' name='sub_category' ordinal='15' />
+            <column datatype='string' name='brand' ordinal='16' />
+            <column datatype='string' name='supplier_name' ordinal='17' />
+            <column datatype='integer' name='lead_time_days' ordinal='18' />
+            <column datatype='real' name='unit_cost' ordinal='19' />
+            <column datatype='real' name='list_price' ordinal='20' />
+            <column datatype='real' name='target_margin_pct' ordinal='21' />
+            <column datatype='integer' name='units_sold' ordinal='22' />
+            <column datatype='real' name='unit_price' ordinal='23' />
+            <column datatype='real' name='gross_revenue' ordinal='24' />
+            <column datatype='real' name='cogs' ordinal='25' />
+            <column datatype='real' name='gross_margin' ordinal='26' />
+            <column datatype='real' name='gross_margin_pct' ordinal='27' />
+            <column datatype='real' name='discount_pct' ordinal='28' />
+            <column datatype='string' name='payment_method' ordinal='29' />
+            <column datatype='string' name='channel' ordinal='30' />
+          </columns>
+        </relation>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Gross Revenue' datatype='real' name='[gross_revenue]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[gross_revenue]' />
+      </column>
+      <column caption='Gross Margin' datatype='real' name='[gross_margin]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[gross_margin]' />
+      </column>
+      <column caption='Sell-Through Rate %' datatype='real' name='[Sell_Through_Rate_Pct]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='ZN(SUM([units_sold])) / (ZN(SUM([units_sold])) + ZN(AVG([lead_time_days] * 12))) * 100' />
+      </column>
+      <column caption='Gross Margin %' datatype='real' name='[Gross_Margin_Pct_Calculated]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='(SUM([gross_revenue]) - SUM([cogs])) / NULLIF(SUM([gross_revenue]), 0) * 100' />
+      </column>
+      <column caption='Inventory Turnover Ratio' datatype='real' name='[Inventory_Turnover_Ratio]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='(SUM([cogs]) * 2.0) / NULLIF(AVG([unit_cost] * 65.0), 0)' />
+      </column>
+      <column caption='Demand Spike Flag' datatype='string' name='[Demand_Spike_Flag]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [units_sold] &gt;= 8 THEN &quot;Demand Surge Spike&quot; ELSE &quot;Baseline Demand&quot; END' />
+      </column>
+      <column caption='Stockout Risk Alert' datatype='string' name='[Stockout_Risk_Alert]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [lead_time_days] &gt;= 12 AND [units_sold] &gt;= 5 THEN &quot;High Reorder Risk (18% Reduction Target)&quot; ELSE &quot;Healthy Buffer&quot; END' />
+      </column>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Executive_Scorecard_Pulse'>
+      <table>
+        <view>
+          <datasources>
+            <datasource name='federated.retail_mart' />
+          </datasources>
+          <datasource-dependencies datasource='federated.retail_mart'>
+            <column name='[gross_revenue]' role='measure' type='quantitative' />
+            <column name='[gross_margin]' role='measure' type='quantitative' />
+            <column name='[Gross_Margin_Pct_Calculated]' role='measure' type='quantitative' />
+            <column name='[Sell_Through_Rate_Pct]' role='measure' type='quantitative' />
+            <column name='[Inventory_Turnover_Ratio]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.retail_mart].[sum:gross_revenue:qk]</rows>
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='Store_Revenue_vs_Target'>
+      <table>
+        <view>
+          <datasources>
+            <datasource name='federated.retail_mart' />
+          </datasources>
+          <datasource-dependencies datasource='federated.retail_mart'>
+            <column name='[store_name]' role='dimension' type='nominal' />
+            <column name='[gross_revenue]' role='measure' type='quantitative' />
+            <column name='[gross_margin]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <rows>[federated.retail_mart].[none:store_name:nk]</rows>
+        <cols>[federated.retail_mart].[sum:gross_revenue:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Category_SellThrough_Matrix'>
+      <table>
+        <view>
+          <datasources>
+            <datasource name='federated.retail_mart' />
+          </datasources>
+          <datasource-dependencies datasource='federated.retail_mart'>
+            <column name='[category]' role='dimension' type='nominal' />
+            <column name='[Sell_Through_Rate_Pct]' role='measure' type='quantitative' />
+            <column name='[Gross_Margin_Pct_Calculated]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <rows>[federated.retail_mart].[none:category:nk]</rows>
+        <cols>[federated.retail_mart].[usr:Sell_Through_Rate_Pct:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Demand_Spike_Forecasting_Trend'>
+      <table>
+        <view>
+          <datasources>
+            <datasource name='federated.retail_mart' />
+          </datasources>
+          <datasource-dependencies datasource='federated.retail_mart'>
+            <column name='[date]' role='dimension' type='ordinal' />
+            <column name='[gross_revenue]' role='measure' type='quantitative' />
+            <column name='[Demand_Spike_Flag]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <rows>[federated.retail_mart].[sum:gross_revenue:qk]</rows>
+        <cols>[federated.retail_mart].[none:date:ok]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Executive Retail Pulse &amp; Stockout Optimization Dashboard'>
+      <style />
+      <size maxheight='1080' maxwidth='1920' minheight='720' minwidth='1280' type='range' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='5' param='horz' type-v2='layout-flow' w='98000' x='1000' y='1000'>
+            <zone h='98000' id='6' name='Executive_Scorecard_Pulse' w='98000' x='1000' y='1000' />
+          </zone>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows>
+    <window class='dashboard' maximized='true' name='Executive Retail Pulse &amp; Stockout Optimization Dashboard'>
+      <viewpoints />
+      <active id='-1' />
+    </window>
+  </windows>
+</workbook>

@@ -1,0 +1,9 @@
+store_id,name,store_type,region,city,state,square_feet,manager_name,target_monthly_revenue,is_active
+STR-001,Manhattan 5th Ave Flagship,Flagship,East,New York,NY,28000,Eleanor Vance,480000.0,True
+STR-002,Chicago Michigan Ave Center,Downtown,Midwest,Chicago,IL,20000,Marcus Kane,340000.0,True
+STR-003,SF Union Square Tech Hub,Flagship,West,San Francisco,CA,24000,Aria Patel,420000.0,True
+STR-004,Austin Domain Town Center,Suburban,South,Austin,TX,16000,Tyler Brooks,260000.0,True
+STR-005,Dallas Galleria Megastore,Mall,South,Dallas,TX,22000,Samantha Cruz,310000.0,True
+STR-006,Seattle Pike Place Boutique,Express,West,Seattle,WA,12000,David Sterling,210000.0,True
+STR-007,Miami Brickell Promenade,Mall,East,Miami,FL,18000,Sofia Reyes,290000.0,True
+STR-008,Omnichannel Hub & Express,Distribution Hub,Midwest,Columbus,OH,45000,Jordan Lee,550000.0,True
