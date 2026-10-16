@@ -49,7 +49,7 @@ STATIC_DIR = BASE_DIR / "dashboard" / "static"
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def serve_index():
     """Serves the executive web BI dashboard."""
     index_file = STATIC_DIR / "index.html"

@@ -82,7 +82,7 @@ def run_tests():
 def run_serve(port: int = None):
     """Starts the FastAPI web server."""
     bind_port = port or SERVER_PORT
-    logger.info(f"Starting Realtime Executive Dashboard on http://{SERVER_HOST}:{bind_port}")
+    logger.info(f"Starting Realtime Executive Dashboard on http://localhost:{bind_port} (bound to {SERVER_HOST}:{bind_port})")
     uvicorn.run("dashboard.server:app", host=SERVER_HOST, port=bind_port, reload=False)
 
 
