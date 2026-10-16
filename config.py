@@ -40,4 +40,4 @@ TARGET_STOCKOUT_REDUCTION_PCT = 18.0  # Project target: 18% stockout reduction
 
 # Server Settings
 SERVER_HOST = os.getenv("HOST", "0.0.0.0")
-SERVER_PORT = int(os.getenv("PORT", 8000))
+SERVER_PORT = int(os.getenv("PORT", 8002))

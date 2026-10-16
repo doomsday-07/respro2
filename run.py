@@ -79,10 +79,11 @@ def run_tests():
     logger.info("All tests passed successfully.")
 
 
-def run_serve():
+def run_serve(port: int = None):
     """Starts the FastAPI web server."""
-    logger.info(f"Starting Realtime Executive Dashboard on http://{SERVER_HOST}:{SERVER_PORT}")
-    uvicorn.run("dashboard.server:app", host=SERVER_HOST, port=SERVER_PORT, reload=False)
+    bind_port = port or SERVER_PORT
+    logger.info(f"Starting Realtime Executive Dashboard on http://{SERVER_HOST}:{bind_port}")
+    uvicorn.run("dashboard.server:app", host=SERVER_HOST, port=bind_port, reload=False)
 
 
 def main():
@@ -94,6 +95,7 @@ def main():
     parser.add_argument("--tableau", action="store_true", help="Export Tableau extracts only")
     parser.add_argument("--test", action="store_true", help="Run pytest suite")
     parser.add_argument("--serve", action="store_true", help="Start the FastAPI web server")
+    parser.add_argument("--port", type=int, default=SERVER_PORT, help="Port to bind web server (default: 8002)")
 
     args = parser.parse_args()
 
@@ -117,7 +119,7 @@ def main():
         run_tests()
 
     if args.serve:
-        run_serve()
+        run_serve(port=args.port)
 
 
 if __name__ == "__main__":

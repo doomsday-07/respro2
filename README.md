@@ -179,7 +179,7 @@ python run.py --all
 # 3. Launch Executive Web BI Dashboard
 python run.py --serve
 ```
-*Open your browser at `http://localhost:8000` to interact with the executive dashboard.*
+*Open your browser at `http://localhost:8002` to interact with the executive dashboard.*
 
 ---
 
@@ -188,7 +188,7 @@ python run.py --serve
 ```bash
 docker-compose up --build -d
 ```
-*Launches PostgreSQL 16 on port 5432 and the Web BI Dashboard on port 8000.*
+*Launches PostgreSQL 16 on port 5432 and the Web BI Dashboard on port 8002.*
 
 ---
 
@@ -204,7 +204,7 @@ pytest -v tests/
 
 ## 📊 Deliverables & Presentation Artifacts
 
-1. **Executive Web BI Dashboard (`http://localhost:8000`):**
+1. **Executive Web BI Dashboard (`http://localhost:8002`):**
    * Real-time live POS checkout stream via WebSocket.
    * Dynamic 30-day predictive demand forecast with confidence intervals.
    * Interactive store and category filter controls.
